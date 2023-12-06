@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block csrf %}
+    {{ csrf_token('token') }}
+{% endblock %}
+
+{% block title %}Post index
+{% endblock %}
+
+{% block body %}
+    <h1>Post index</h1>
+    <div id="app">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set appPostDeleteUrl = path('app_post_delete') %}
+                {% for post in posts %}
+                    <tr id="tr-{{post.id}}">
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.name }}</td>
+                        <td>{{ post.surname }}</td>
+                        <td>
+                            <del-post post-id="{{post.id}}" app-post-delete-url="{{appPostDeleteUrl}}"></del-post>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+

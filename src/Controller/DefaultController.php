@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\LoadPostsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,4 +16,11 @@ class DefaultController extends AbstractController
             'controller_name' => 'DefaultController',
         ]);
     }
+
+    // #[Route('/test', name: 'test')]
+    // public function test(LoadPostsService $lp): Response
+    // {
+    //     dd($lp->loadPosts());//mmmyyy
+
+    // }
 }
